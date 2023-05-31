@@ -1,10 +1,7 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class MyGraph<Vertex> {
-    private Map<Vertex, List<Vertex>> list;
+public class MyGraph<V> {
+    private Map<Vertex, List<Edge<V>>> list;
 
 
     public MyGraph() {
@@ -15,26 +12,32 @@ public class MyGraph<Vertex> {
         list.put(vertex, new LinkedList<>());
     }
 
-    public void addEdge(Vertex source, Vertex destination) {
-        validateVertex(source);
-        validateVertex(destination);
-        list.get(source).add(destination);
-        list.get(destination).add(source);
-
-    }
-
-    private void validateVertex(Vertex index) {
-        if (!list.containsKey(index)) {
-            throw new IllegalArgumentException("Vertex " + index + " is out of the range");
+    public void addEdge(Vertex source, Vertex destination, double weight) {
+        Edge edge = new Edge(source, destination, weight);
+        source.addAdjacentVertex(destination, weight);
+        if(!list.containsKey(source)){
+            list.put(source, new ArrayList<>());
         }
+
+        list.get(source).add(edge);
+//        validateVertex(source);
+//        validateVertex(destination);
+//        list.get(source).add(destination);
+//        list.get(destination).add(source);
     }
+
+//    private void validateVertex(Vertex index) {
+//        if (!list.containsKey(index)) {
+//            throw new IllegalArgumentException("Vertex " + index + " is out of the range");
+//        }
+//    }
 
     public void printGraph() {
-        for (Map.Entry<Vertex, List<Vertex>> entry : list.entrySet()) {
+        for (Map.Entry<Vertex, List<Edge<V>>> entry : list.entrySet()) {
             Vertex vertex = entry.getKey();
-            List<Vertex> neighbors = entry.getValue();
+            List<Edge<V>> neighbors = entry.getValue();
             System.out.print("Vertex " + vertex + " is connected to: ");
-            for (Vertex neighbor : neighbors) {
+            for (Edge<V> neighbor : neighbors) {
                 System.out.print(neighbor + " ");
             }
             System.out.println();
@@ -42,9 +45,7 @@ public class MyGraph<Vertex> {
     }
 
     public void removeEdge(Vertex source, Vertex destination) {
-        validateVertex(source);
-        validateVertex(destination);
-        List<Vertex> neighbors = list.get(source);
+        List<Edge<V>> neighbors = list.get(source);
         if (neighbors!=null) {
             neighbors.remove(destination);
         }
@@ -52,19 +53,15 @@ public class MyGraph<Vertex> {
     }
 
     public boolean hasEdge(Vertex source, Vertex destination) {
-        validateVertex(source);
-        validateVertex(destination);
-        List<Vertex> neighbors = list.get(source);
+        List<Edge<V>> neighbors = list.get(source);
         return neighbors != null && neighbors.contains(destination);
     }
 
-    public List<Vertex> getNeighbors(Vertex vertex) {
-        validateVertex(vertex);
+    public List<Edge<V>> getNeighbors(Vertex vertex) {
         return list.getOrDefault(vertex, new LinkedList<>());
     }
 
     public void DFS(Vertex start) {
-        validateVertex(start);
         Map<Vertex, Boolean> visited = new HashMap<>();
         for (Vertex vertex:list.keySet()) {
             visited.put(vertex,false);
@@ -77,9 +74,9 @@ public class MyGraph<Vertex> {
     private void DFSHelper(Vertex vertex, Map<Vertex, Boolean> visited) {
         visited.put(vertex, true);
         System.out.print(vertex + " ");
-        for (Vertex neighbor : list.get(vertex)) {
-            if (!visited.get(neighbor)) {
-                DFSHelper(neighbor, visited);
+        for(int i = 0; i < list.size(); i++){
+            if(!visited.get(list.get(i))){
+                DFSHelper((Vertex) list.get(i), visited);
             }
         }
     }
