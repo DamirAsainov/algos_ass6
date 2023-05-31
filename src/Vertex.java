@@ -12,4 +12,8 @@ public class Vertex<V> {
         this.data = data;
         adjacentVertices = new HashMap<>();
     }
+    @Override
+    public String toString(){
+        return data.toString();
+    }
 }

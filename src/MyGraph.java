@@ -60,23 +60,22 @@ public class MyGraph<V> {
     public List<Edge<V>> getNeighbors(Vertex vertex) {
         return list.getOrDefault(vertex, new LinkedList<>());
     }
-
-    public void DFS(Vertex start) {
-        Map<Vertex, Boolean> visited = new HashMap<>();
-        for (Vertex vertex:list.keySet()) {
-            visited.put(vertex,false);
-        }
-        DFSHelper(start, visited);
-
+    public void DFS(Vertex startVertex) {
+        Set<Vertex> visited = new HashSet<>();
+        DFSHelper(startVertex, visited);
     }
 
+    private void DFSHelper(Vertex currentVertex, Set<Vertex> visited) {
+        visited.add(currentVertex);
+        System.out.print(currentVertex + " ");
 
-    private void DFSHelper(Vertex vertex, Map<Vertex, Boolean> visited) {
-        visited.put(vertex, true);
-        System.out.print(vertex + " ");
-        for(int i = 0; i < list.size(); i++){
-            if(!visited.get(list.get(i))){
-                DFSHelper((Vertex) list.get(i), visited);
+        List<Edge<V>> neighbors = list.get(currentVertex);
+        if (neighbors != null) {
+            for (Edge<V> neighbor : neighbors) {
+                Vertex adjacentVertex = neighbor.getDest();
+                if (!visited.contains(adjacentVertex)) {
+                    DFSHelper(adjacentVertex, visited);
+                }
             }
         }
     }

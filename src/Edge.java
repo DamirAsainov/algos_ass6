@@ -1,6 +1,6 @@
-public class Edge <Vertex> {
-    private Vertex source;
-    private Vertex dest;
+public class Edge <V> {
+    private Vertex<V> source;
+    private Vertex<V> dest;
     private Double weight;
 
     public Edge(Vertex source, Vertex dest, Double weight) {
@@ -32,4 +32,11 @@ public class Edge <Vertex> {
     public void setWeight(Double weight) {
         this.weight = weight;
     }
+
+
+    @Override
+    public String toString(){
+        return dest.toString();
+    }
+
 }
