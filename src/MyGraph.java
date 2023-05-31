@@ -103,4 +103,36 @@ public class MyGraph<V> {
             }
         }
     }
+    public Map<Vertex, Double> dijkstra(Vertex startVertex) {
+        Map<Vertex, Double> dist = new HashMap<>();
+        for (Vertex vertex : list.keySet()) {
+            dist.put(vertex, Double.MAX_VALUE);
+        }
+        dist.put(startVertex, 0d);
+
+        PriorityQueue<Vertex> queue = new PriorityQueue<>(Comparator.comparingDouble(dist::get));
+        queue.add(startVertex);
+
+        while (!queue.isEmpty()) {
+            Vertex currentVertex = queue.poll();
+            List<Edge<V>> neighbors = list.get(currentVertex);
+            if (neighbors == null) {
+                continue;
+            }
+            for (Edge<V> neighbor : neighbors) {
+                Vertex<V> destination = neighbor.getDest();
+                Double currentDistance = dist.get(currentVertex);
+                if (currentDistance == null) {
+                    continue;
+                }
+                double distance = currentDistance + neighbor.getWeight();
+                Double destinationDistance = dist.get(destination);
+                if (destinationDistance == null || distance < destinationDistance) {
+                    dist.put(destination, distance);
+                    queue.add(destination);
+                }
+            }
+        }
+        return dist;
+    }
 }

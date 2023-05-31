@@ -17,6 +17,8 @@ public class Main {
         graph.DFS(s1);
         System.out.println();
         graph.BFS(s1);
+        System.out.println();
+        System.out.println(graph.dijkstra(s1));
 //        MyGraph<Integer> temp = new MyGraph<>();
 //        temp.addVertex(new Vertex<>(1));
 //        temp.addVertex(new Vertex<>(3));
