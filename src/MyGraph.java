@@ -15,7 +15,7 @@ public class MyGraph<V> {
     public void addEdge(Vertex source, Vertex destination, double weight) {
         Edge edge = new Edge(source, destination, weight);
         source.addAdjacentVertex(destination, weight);
-        if(!list.containsKey(source)){
+        if (!list.containsKey(source)) {
             list.put(source, new ArrayList<>());
         }
 
@@ -46,7 +46,7 @@ public class MyGraph<V> {
 
     public void removeEdge(Vertex source, Vertex destination) {
         List<Edge<V>> neighbors = list.get(source);
-        if (neighbors!=null) {
+        if (neighbors != null) {
             neighbors.remove(destination);
         }
         list.get(destination).remove(source);
@@ -60,21 +60,45 @@ public class MyGraph<V> {
     public List<Edge<V>> getNeighbors(Vertex vertex) {
         return list.getOrDefault(vertex, new LinkedList<>());
     }
+
     public void DFS(Vertex startVertex) {
-        Set<Vertex> visited = new HashSet<>();
+        Map<Vertex, Boolean> visited = new HashMap<>();
         DFSHelper(startVertex, visited);
     }
 
-    private void DFSHelper(Vertex currentVertex, Set<Vertex> visited) {
-        visited.add(currentVertex);
+    private void DFSHelper(Vertex currentVertex, Map<Vertex, Boolean> visited) {
+        visited.put(currentVertex, true);
         System.out.print(currentVertex + " ");
 
         List<Edge<V>> neighbors = list.get(currentVertex);
         if (neighbors != null) {
             for (Edge<V> neighbor : neighbors) {
                 Vertex adjacentVertex = neighbor.getDest();
-                if (!visited.contains(adjacentVertex)) {
+                if (!visited.containsKey(adjacentVertex)) {
                     DFSHelper(adjacentVertex, visited);
+                }
+            }
+        }
+    }
+
+    public void BFS(Vertex startVertex) {
+        Map<Vertex, Boolean> visited = new HashMap<>();
+        Queue<Vertex> queue = new LinkedList<>();
+        queue.add(startVertex);
+        visited.put(startVertex, true);
+
+        while (!queue.isEmpty()) {
+            Vertex currentVertex = queue.poll();
+            System.out.print(currentVertex + " ");
+
+            List<Edge<V>> neighbors = list.get(currentVertex);
+            if (neighbors != null) {
+                for (Edge<V> neighbor : neighbors) {
+                    Vertex adjacentVertex = neighbor.getDest();
+                    if (!visited.containsKey(adjacentVertex)) {
+                        queue.add(adjacentVertex);
+                        visited.put(adjacentVertex, true);
+                    }
                 }
             }
         }

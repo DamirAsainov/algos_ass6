@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="188c814a-242d-4139-ad17-c11159aff0a1" name="Changes" comment="fix bags">
+    <list default="true" id="188c814a-242d-4139-ad17-c11159aff0a1" name="Changes" comment="DFS method, fix bags">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Vertex.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +55,7 @@
       <updated>1685470264085</updated>
       <workItem from="1685470265400" duration="1606000" />
       <workItem from="1685500771820" duration="2110000" />
-      <workItem from="1685552608050" duration="5981000" />
+      <workItem from="1685552608050" duration="8445000" />
     </task>
     <task id="LOCAL-00001" summary="hello world">
       <created>1685470437827</created>
@@ -87,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685556025995</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="DFS method, fix bags">
+      <created>1685559118086</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685559118086</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +103,7 @@
     <MESSAGE value="Edge class" />
     <MESSAGE value="Vertex class" />
     <MESSAGE value="fix bags" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bags" />
+    <MESSAGE value="DFS method, fix bags" />
+    <option name="LAST_COMMIT_MESSAGE" value="DFS method, fix bags" />
   </component>
 </project>
