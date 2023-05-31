@@ -11,6 +11,10 @@ public class MyGraph<V> {
     public void addVertex(Vertex vertex) {
         list.put(vertex, new LinkedList<>());
     }
+    /*
+     * Adds a new vertex to the graph.
+     * @param vertex the vertex to add.
+     */
 
     public void addEdge(Vertex source, Vertex destination, double weight) {
         Edge edge = new Edge(source, destination, weight);
@@ -20,18 +24,13 @@ public class MyGraph<V> {
         }
 
         list.get(source).add(edge);
-//        validateVertex(source);
-//        validateVertex(destination);
-//        list.get(source).add(destination);
-//        list.get(destination).add(source);
     }
-
-//    private void validateVertex(Vertex index) {
-//        if (!list.containsKey(index)) {
-//            throw new IllegalArgumentException("Vertex " + index + " is out of the range");
-//        }
-//    }
-
+    /*
+     * Adds an edge between two vertices with a given weight.
+     * @param source the source vertex.
+     * @param destination the destination vertex.
+     * @param weight the weight of the edge.
+     */
     public void printGraph() {
         for (Map.Entry<Vertex, List<Edge<V>>> entry : list.entrySet()) {
             Vertex vertex = entry.getKey();
@@ -43,6 +42,9 @@ public class MyGraph<V> {
             System.out.println();
         }
     }
+    /*
+     * Prints the graph by iterating over each vertex and its neighbors.
+     */
 
     public void removeEdge(Vertex source, Vertex destination) {
         List<Edge<V>> neighbors = list.get(source);
@@ -51,20 +53,35 @@ public class MyGraph<V> {
         }
         list.get(destination).remove(source);
     }
+    /*
+     * Removes an edge between two vertices.
+     * @param source the source vertex.
+     * @param destination the destination vertex.
+     */
 
     public boolean hasEdge(Vertex source, Vertex destination) {
         List<Edge<V>> neighbors = list.get(source);
         return neighbors != null && neighbors.contains(destination);
-    }
+    }/*
+     * Checks if an edge exists between two vertices.
+     * @param source the source vertex.
+     * @param destination the destination vertex.
+     * @return true if an edge exists, false otherwise.
+     */
 
     public List<Edge<V>> getNeighbors(Vertex vertex) {
         return list.getOrDefault(vertex, new LinkedList<>());
-    }
+    }/*
+     * Gets the list of neighboring vertices for a given vertex.
+     * @param vertex the vertex to retrieve neighbors for.
+     * @return the list of neighboring vertices.
+     */
 
     public void DFS(Vertex startVertex) {
         Map<Vertex, Boolean> visited = new HashMap<>();
         DFSHelper(startVertex, visited);
     }
+
 
     private void DFSHelper(Vertex currentVertex, Map<Vertex, Boolean> visited) {
         visited.put(currentVertex, true);
@@ -103,6 +120,11 @@ public class MyGraph<V> {
             }
         }
     }
+    /*
+     * Performs Breadth-First Search (BFS) traversal on the graph starting from a given source vertex.
+     * @param startVertex the source vertex to start the BFS traversal from.
+     * @return a list of vertices visited in BFS order.
+     */
     public Map<Vertex, Double> dijkstra(Vertex startVertex) {
         Map<Vertex, Double> dist = new HashMap<>();
         for (Vertex vertex : list.keySet()) {
@@ -135,4 +157,9 @@ public class MyGraph<V> {
         }
         return dist;
     }
+    /*
+     * Performs Dijkstra's algorithm to find the shortest path from a given source vertex to all other vertices in the graph.
+     * @param startVertex the source vertex to start the shortest path search from.
+     * @return a map containing the shortest path distances from the source vertex to all other vertices.
+     */
 }

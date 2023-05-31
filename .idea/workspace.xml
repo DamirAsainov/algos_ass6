@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="188c814a-242d-4139-ad17-c11159aff0a1" name="Changes" comment="BFS method">
+    <list default="true" id="188c814a-242d-4139-ad17-c11159aff0a1" name="Changes" comment="dijkstra method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeightedGraph.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +56,7 @@
       <updated>1685470264085</updated>
       <workItem from="1685470265400" duration="1606000" />
       <workItem from="1685500771820" duration="2110000" />
-      <workItem from="1685552608050" duration="9625000" />
+      <workItem from="1685552608050" duration="11079000" />
     </task>
     <task id="LOCAL-00001" summary="hello world">
       <created>1685470437827</created>
@@ -99,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685561615455</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="dijkstra method">
+      <created>1685562670363</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685562670363</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +120,7 @@
     <MESSAGE value="fix bags" />
     <MESSAGE value="DFS method, fix bags" />
     <MESSAGE value="BFS method" />
-    <option name="LAST_COMMIT_MESSAGE" value="BFS method" />
+    <MESSAGE value="dijkstra method" />
+    <option name="LAST_COMMIT_MESSAGE" value="dijkstra method" />
   </component>
 </project>

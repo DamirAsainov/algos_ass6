@@ -1,5 +1,4 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class Main {
     public static void main(String[] args) {
         MyGraph<Integer> graph = new MyGraph<>();
@@ -13,28 +12,12 @@ public class Main {
         graph.addEdge(s2, s4, 7d);
         graph.addEdge(s2, s5, 8d);
         graph.printGraph();
-        System.out.println();
+        System.out.println("DFS:");
         graph.DFS(s1);
-        System.out.println();
+        System.out.println("\nBFS:");
         graph.BFS(s1);
         System.out.println();
-        System.out.println(graph.dijkstra(s1));
-//        MyGraph<Integer> temp = new MyGraph<>();
-//        temp.addVertex(new Vertex<>(1));
-//        temp.addVertex(new Vertex<>(3));
-//        temp.addVertex(new Vertex<>(2));
-//        temp.addVertex(new Vertex<>(4));
-//        temp.addEdge(new Vertex<>(1), new Vertex<>(3), 5);
-//        temp.addEdge(new Vertex<>(1), new Vertex<>(2), 3);
-//        temp.addEdge(new Vertex<>(2), new Vertex<>(4), 1);
-//        temp.addEdge(new Vertex<>(3), new Vertex<>(4), 5);
-//        temp.printGraph();
-//        System.out.println();
-//        temp.removeEdge(new Vertex<>(2), new Vertex<>(3));
-//        temp.printGraph();
-//        System.out.println(temp.hasEdge(new Vertex<>(1),new Vertex<>(3)));
-//        System.out.println(temp.hasEdge(new Vertex<>(1),new Vertex<>(2)));
-//        System.out.println(temp.getNeighbors(new Vertex<>(1)));
-//        temp.DFS(new Vertex<>(1));
+        System.out.println("Dijkstra Algorithm - " + graph.dijkstra(s1));
+        System.out.println();
     }
 }
